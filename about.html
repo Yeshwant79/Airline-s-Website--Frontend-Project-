@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline</title>
+    <link rel="icon" type="image" href="Img/Icon-L.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="JQ.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        html{overflow-x:hidden;}
+        *{padding:0; margin:0;}
+        html{scroll-behavior:smooth;}
+        /* nav{background-color: lightsalmon;} */
+        .topbar{background-color:lightsalmon;}
+        a{text-decoration:none; color:black;}
+        .root-img{border-radius:50%;} 
+
+        i{transition:all 2s;}
+        i:hover{transform:scale(2);}
+        #mask{width:100%; background-color:rgb(186, 239, 200);}
+        .mask{ font-size:150px; color:transparent; background-image:url('Img/banner-01.jpg'); background-size:cover; -webkit-background-clip:text;}
+        .design1{background-color:black !important; color:white;}
+        .design2{color:white !important;}
+        .design3{color:black;}
+        .design4{background-color:yellow;}
+        .design5{background-color:orange !important;}
+        .design6{background-color:white !important;}
+        .slider{ position:fixed; bottom:0.5in; right:0.5in;}
+        .tre{ background-color:rgb(232, 231, 236);}
+
+        .five{height:90vh; width:100%; margin-top:10vh; text-align:center; background-color:transparent; position:fixed; display:none; z-index:99;}
+        .c1{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:0s; animation-duration:5s; animation-iteration-count:infinite;} 
+        .c2{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:2s; animation-duration:6s; animation-iteration-count:infinite;} 
+        .c3{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:0s; animation-duration:7s; animation-iteration-count:infinite;} 
+        .c4{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:1s; animation-duration:6s; animation-iteration-count:infinite;} 
+        .c5{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:0s; animation-duration:5s; animation-iteration-count:infinite;} 
+        .c6{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:2s; animation-duration:7s; animation-iteration-count:infinite;} 
+        .c7{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:0s; animation-duration:6s; animation-iteration-count:infinite;} 
+        .c8{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:1s; animation-duration:5s; animation-iteration-count:infinite;}
+
+        @keyframes c{
+            0%{background-color:aquamarine; position: relative; top:0;}
+            25%{background-color:lawngreen;}
+            50%{background-color:blue;}
+            75%{background-color:orangered;}
+            100%{background-color:yellow; position: relative; top:90vh;}
+        }
+
+    </style>
+    <!-- J Query -->
+    <script>
+        jQuery(document).ready(function(){
+            $("#btn1").click(function(){jQuery('#signup').hide() && jQuery('#signin').show() });
+            $("#btn2").click(function(){jQuery('#signin').hide()&& jQuery('#signup').show()});
+            $(".ca").click(function(){jQuery('#signin').hide()&& jQuery('#signup').show()});
+            $("#theam").click(function(){
+                $('body').toggleClass("design1")
+                $('.wb').toggleClass("design1")
+                $('.collapse').toggleClass("design1")
+                $('.aw').toggleClass("design2")
+                $('.bw').toggleClass("design1")
+                $('.tb').toggleClass("design3")
+                $('.org').toggleClass("design5")
+                $('.list-group-item').toggleClass("design4")
+            });
+        });
+    </script>
+    <!-- JS -->
+    <script>
+        // Animation
+        setInterval(showoff,15000);
+        function showoff(){
+
+            document.getElementById("offercard").style.display="block"
+
+            setTimeout(showon,5000);
+            function showon(){document.getElementById("offercard").style.display="none"}
+        }
+
+        // --Form Submit------
+
+        let word=["A","a","C","d","F","u","#","@","D","6","2","9","3"];
+        let a=word[Math.round(Math.random()*12)];
+        let b=word[Math.round(Math.random()*12)];
+        let c=word[Math.round(Math.random()*12)];
+        let d=word[Math.round(Math.random()*12)];
+        let e=word[Math.round(Math.random()*12)];
+        let key=(a+b+c+d+e);
+        function cap(){ document.getElementById("captcha").innerHTML=key;}
+
+        function fomin(){
+
+            let user = document.getElementById("user").value ;
+            let mail = document.getElementById("mail").value ;
+            let mno = document.getElementById("mno").value ;
+            let pas = document.getElementById("pass").value ;
+            let captcha = document.getElementById("captcha").value ;
+            let clone = document.getElementById("key").value ;
+            if(user==""){alert("Enter Your Name"); return false}
+            if(mail==""){alert("Enter mail-Id to proseed");return false;}
+            if(mail.indexOf("@") == -1) {alert("@ is missing"); return false;}
+            if(mail.indexOf(".") == -1) {alert(" . is missing"); return false;}
+            if(mail.indexOf("@") == 0) {alert("@ shoud not at first"); return false;}
+            if(mail.indexOf(".") == 0) {alert(". shoud not at first"); return false;}
+            if(mail.indexOf("@") == mail.length-1) {alert("@ shoud not at last"); return false;}
+            if(mail.indexOf(".") == mail.length-1) {alert(". shoud not at last"); return false;}
+            if(mail.indexOf("@") == mail.indexOf(".")-1) {alert("@ and . should not together"); return false;}
+            if(mail.indexOf(".") == mail.indexOf("@")-1) {alert(". and @ should not together"); return false;}
+            if(mno==""){alert("Enter Your Mobile Number"); return false;}
+            if(mno.length!=10){alert("Enter Valid Mobile Number"); return false;}
+            if(pas==""){alert("Creat Passward"); return false;}
+            if(pas.length<5){alert("Passward shoud be Strong"); return false;}
+            if(clone==""){alert("Enter Captcha"); return false;}
+            // if(clone!=captcha){alert(" Wrong Captch"); return false;}
+            if(clone==captcha){alert(" Registration Success"); return true;}
+
+        }
+    </script>
+</head>
+<body onload="showoff(),cap()">
+    <!-- Animation -->
+    <div class="container">
+        <div class="five" id="offercard">
+            <div class="Beloon d-flex">
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Headder -->
+    <div class="container-fluid my-4" id="top">
+        <div class="row">
+            <div class="col-sm">
+                <div class="row">
+                    <div class="col-2"><img src="Img/Icon-S.png" height="60px" width="60px"></div>
+                    <div class="col-4"><h3>Akash Marg</h3></div>
+                </div>
+            </div>
+            <div class="col-sm pt-2">
+                <ul class="list-unstyled d-flex">
+                    <li class="list-item"><a href="help.html" class="bw"><span>Contect Us </span> <i class="zmdi zmdi-phone"></i></a></li>
+                    <li class="list-item px-2">|</li>
+                    <li class="list-item">
+                        <select name="" id=""> 
+                            <option value="">English</option>
+                            <option value="">Hindi</option>
+                        </select>
+                        <i class="zmdi zmdi-globe-alt"></i></li>
+                    <li class="list-item px-2">|</li>
+                    <li class="list-item px-1">
+                        <button class="border-0 btn-sm p-0 bg-light" style="width:25px;">A<sup>-</sup></button>
+                        <button class="border-0 btn-sm px-1 bg-light" style="width:25px;">A</button>
+                        <button class="border-0 btn-sm p-0 bg-light" style="width:25px;">A<sup>+</sup></button>
+                    </li>
+                    <li class="list-item px-2">|</li>
+                    <li class="list-item"><button id="theam" class="btn btn-sm btn-outline-warning"><i class="zmdi zmdi-brightness-6"></i></button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <div class="row sticky-top col-lg topbar m-0">
+
+        <div class="col-9 p-0">
+            <nav class="nav nav-tabs ps-5 justify-content-around py-2">
+                <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link active">ABOUT</a></li>
+                <li class="nav-item"><a href="topdeals.html" class="nav-link">TOP DEALS</a></li>
+                <li class="nav-item"><a href="#" class="nav-link ca" data-bs-toggle="modal" data-bs-target="#gidebox1">GRIVENCE & TIPS</a></li>
+                <li class="nav-item"><a href="help.html" class="nav-link">HELP</a></li>
+            </nav>
+        </div>
+
+        <div class="col-3 py-2 d-flex justify-content-center">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#form">Register / Log in</button>
+        </div> 
+    </div>
+     <!-- Model with form-1 & 2-->
+     <div class="modal" id="form">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background-color:aquamarine;">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="btn-group my-3">
+                            <button class="btn btn-outline-primary" id="btn1">Sign In</button>
+                            <button class="btn btn-outline-primary" id="btn2">Sign Up</button>
+                        </div>
+                    </div>
+                     <!-- Sign up -->
+                     <form action="about.html" class="from" id="signup" style="display:none;" onsubmit="return fomin()">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text"class="form-control" id="user">
+                        <label for="mail" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="mail">
+                        <label for="phone_no" class="form-label">Phone No </label>
+                        <input type="number"class="form-control" id="mno">
+                        <label for="Passward"class="form-label">Creat Passward</label>
+                        <input type="text" class="form-control" id="pass">
+                        <label for="Captcha" id="captcha" class="h2 p-1 mt-2 bg-warning"></label>
+                        <input type="text" class="form-control" id="key">
+
+                        <!-- <h5 onclick="fomin()" class="mt-2 p-2" style="display:block; margin:auto;">GO</h5> -->
+                        <!-- <input type="button" class="btn btn-outline-primary mt-3" onclick="fomin()" value="Submit"  style="display:block; margin:auto;"> -->
+                        <input type="submit" onclick="fomin()" style="display:block; margin:auto;" class="btn btn-outline-primary mt-2 mx-auto">
+                    </form>
+                    <!-- Sign in -->
+                    <form action="" class="from" id="signin">
+                        <label for="userid" class="form-label">User Id </label>
+                        <input type="email"class="form-control">
+                        <label for="Passward"class="form-label"> Passward</label>
+                        <input type="text" class="form-control">
+                        <br>
+                        <input type="submit" style="display:block; margin:auto;"  class="btn btn-outline-primary">
+                        <div class="mt-3">
+                            <a href=""> forgot Passward</a>
+                            <a href=""class="ca" style="float:right;" data-bs-toggle="modal" data-bs-target="#form"> Creat new Account</a>
+                        </div>
+                    </form>
+                    
+                </div>
+                <!-- closers -->
+            </div>
+        </div>
+    </div>
+    <!-- Model 2  -->
+    <div class="modal" id="gidebox1">
+        <div class="modal-dialog ">
+            <div class="modal-content" style="background-color:wheat;">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body"><p class="text-success">To use this facility please Log-in </p></div>
+                <!-- Modal footer -->
+                <div class="modal-footer"> <button class="btn btn-outline-primary ca" data-bs-toggle="modal" data-bs-target="#form">Way to Log-in </button></div>
+            </div>
+        </div>
+    </div>
+    <!-- Mask -->
+    <div class="container-fluid p-0" data-aos="flip-up" style="height:70vh;">
+        <div id="mask" class="text-center h-100" style="overflow:auto;">
+            <span class="mask h1 shadow" style="line-height:70vh;">AKASH MARG</span>
+        </div>
+    </div>
+    <!-- About-us & Travel News -->
+    <div class="container-fluid p-5 my-5 mt-3">
+        <div class="row">
+            <div class="col-lg-7 my-5" data-aos="fade-left">
+                <h1>About US</h1>
+                <p class="mt-4">
+                    This is the official portal of Income Tax Department, 
+                    Ministry of Finance, Government of India. The portal 
+                    has been developed as a Mission Mode Project under the 
+                    National E-Governance Plan. The objective of this portal is 
+                    to provide a single window access to the income tax related 
+                    services for taxpayers and other stakeholders.
+                </p>
+            </div>
+            <div class="col-lg-5 my-5 bw" data-aos="fade-right">
+                <h2 class="tb">Travel News</h2>
+                <div class="row shadow p-2 org" style="overflow-y:scroll; height:190px;">
+                    <div class="row">
+                        <div class="col-2 px-2 pt-3">
+                            <b>21 Jan</b>
+                        </div>
+                        <div class="col-10">
+                            <p><b>Bhutan to take part in the 2023 South Asian Travel and Tourism Exchange Exhibition.</b></p>
+                            <p>
+                                To promote Bhutan tourism, Bhutan Tourism Council announced its participation in 
+                                South Asia's Travel and Tourism Exchange (SATTE) 2023 in India.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 px-2 pt-3">
+                            <b>21 Jan</b>
+                        </div>
+                        <div class="col-10">
+                            <p><b>Bhutan to take part in the 2023 South Asian Travel and Tourism Exchange Exhibition.</b></p>
+                            <p>
+                                To promote Bhutan tourism, Bhutan Tourism Council announced its participation in 
+                                South Asia's Travel and Tourism Exchange (SATTE) 2023 in India.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 px-2 pt-3">
+                            <b>21 Jan</b>
+                        </div>
+                        <div class="col-10">
+                            <p><b>Bhutan to take part in the 2023 South Asian Travel and Tourism Exchange Exhibition.</b></p>
+                            <p>
+                                To promote Bhutan tourism, Bhutan Tourism Council announced its participation in 
+                                South Asia's Travel and Tourism Exchange (SATTE) 2023 in India.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 px-2 pt-3">
+                            <b>21 Jan</b>
+                        </div>
+                        <div class="col-10">
+                            <p><b>Bhutan to take part in the 2023 South Asian Travel and Tourism Exchange Exhibition.</b></p>
+                            <p>
+                                To promote Bhutan tourism, Bhutan Tourism Council announced its participation in 
+                                South Asia's Travel and Tourism Exchange (SATTE) 2023 in India.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About-2 -->
+    <div class="container-fluid p-5">
+        <div class="row p-5" data-aos="zoom-in-down">
+            <div class="col-lg-6 ps-5">
+                <h2>DISTRACTED BY THE READABLE</h2>
+                <p class="h5 pt-3 text-muted">
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, aIt is a long established fact 
+                    that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum 
+                    is that it has a more-or-less normal distribution of letters, aIt is a long established fact that a reader will be distracted 
+                    by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less 
+                    normal distribution of lettersdistracted by the readable distracted by the readable , a
+                </p>
+            </div>
+            <div class="col-lg-6"><img src="Img/cyl.png" width="100%"></div>
+            <div class="col-lg-12 p-5 text-center">
+                <button class="btn btn-center btn-outline-primary"><h3>READ MORE</h3></button>
+            </div>
+        </div>
+    </div>
+    <!-- Our Services -->
+    <div class="container-fluid my-5">
+        <div class="row tre shadow p-5 bw" data-aos="zoom-in-up">
+            <div class="col-lg-12 my-5" style="text-align:center;"><h2>SERVICES</h2></div>
+            <p class="text-center p-5">
+                Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. 
+                Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. 
+                Quia fugiat sit in iste officiis commodi quidem hic quas.
+            </p>
+            <div class="col-lg col-md-5 m-sm-2 px-3 py-4 bg-white text-center tb" data-aos="flip-left">
+                <span class="display-5 text-info"><i class="zmdi zmdi-dribbble"></i></span>
+                <h4 class="text-info mt-5">About Us</h4>
+                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+            </div>
+            <div class="col-lg col-md-5 m-sm-2 px-3 py-4 bg-white text-center tb" data-aos="flip-left">
+                <span class="display-5 text-info"><i class="zmdi zmdi-file"></i></span>
+                <h4 class="text-info mt-5">Management</h4>
+                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+            </div>
+            <div class="col-lg col-md-5 m-sm-2 px-3 py-4 bg-white text-center tb" data-aos="flip-left">
+                <span class="display-5 text-info"><i class="zmdi zmdi-input-antenna"></i></span>
+                <h4 class="text-info mt-5">Our Staff</h4>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+            </div>
+            <div class="col-lg col-md-5 m-sm-2 px-3 py-4 bg-white text-center tb" data-aos="flip-left">
+                <span class="display-5 text-info"><i class="zmdi zmdi-layers"></i></span>
+                <h4 class="text-info mt-5">Safety</h4>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+            </div>
+        </div>
+    </div>
+    <!-- Follow Us on -->
+    <div class="container my-5 shadow p-5">
+        <h3 class="text-center my-5">Follow Us on</h3>
+        <div class="row" data-aos="flip-right">
+            <div class="col">
+                <ul class="list-unstyled nav justify-content-around" style="font-size:80px;">
+                    <li class="list-item"><a href="https://twitter.com/i/flow/login" target="_blank" class="list-link text-info"><i class="zmdi zmdi-twitter"></i></a></li>
+                    <li class="list-item"><a href="https://youtube.com/i/flow/login" target="_blank" class="list-link text-danger"><i class="zmdi zmdi-youtube"></i></a></li>
+                    <li class="list-item"><a href="https://www.facebook.com/" target="_blank" class="list-link text-success"><i class="zmdi zmdi-facebook"></i></a></li>
+                    <li class="list-item"><a href="https://www.instagram.com/?hl=en" target="_blank" class="list-link" style="color: magenta;"><i class="zmdi zmdi-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Blog-->
+    <div class="container-fluid my-5">
+        <h2 class="m-5">Travel Blog</h2>
+        <div class="m-5 p-5 bg-warning" data-aos="zoom-in-down">
+            <div class="row mx-lg-5">    
+                <div class="col-lg-6">
+                    <img src="Img/bct-4.jpg" width="100%">
+                    <code>Post By:Travel Agency</code>
+                    <span class="offset-lg-4 offset-md-6 offset-3"><code>05</code> Like <code>06</code> Comment</span>
+                    <h4>London Amazing Tour</h4>
+                    <p class="" style="text-align:justify;">
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                        The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, 
+                        content here', making it look like readable English. Many desktop publishing packages and web
+                    </p>
+                </div>
+    
+                <div class="col-lg-6">
+                <img src="Img/trac-4.png" width="100%">
+                <code>Post By:Travel Agency</code>
+                <span class="offset-lg-4 offset-md-6 offset-3"><code>05</code> Like <code>06</code> Comment</span>
+                <h4>London Amazing Tour</h4>
+                <p class="" style="text-align:justify;">
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, 
+                    content here', making it look like readable English. Many desktop publishing packages and web
+                </p>
+                </div>
+            </div>
+    
+            <div class="row my-5 mx-lg-5">
+                <div class="col-lg-6">
+                    <img src="Img/tamilnadu.jpg" width="100%">
+                    <code>Post By:Travel Agency</code>
+                    <span class="offset-lg-4 offset-md-6 offset-3"><code>05</code> Like <code>06</code> Comment</span>
+                    <h4>London Amazing Tour</h4>
+                    <p class="" style="text-align:justify;">
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                        The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, 
+                        content here', making it look like readable English. Many desktop publishing packages and web
+                    </p>
+                </div>
+                
+                <div class="col-lg-6">
+                <img src="Img/bct-3.webp" width="100%">
+                <code>Post By:Travel Agency</code>
+                <span class="offset-lg-4 offset-md-6 offset-3"><code>05</code> Like <code>06</code> Comment</span>
+                <h4>London Amazing Tour</h4>
+                <p class="" style="text-align:justify;">
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, 
+                    content here', making it look like readable English. Many desktop publishing packages and web
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Help -->
+    <div class="container mt-5 shadow p-5">
+        <div class="row" data-aos="zoom-out-left">
+            <div class="col">
+                <ul class="list-unstyled nav justify-content-around" style="font-size:80px;">
+                    <li class="list-item"><a href="#" class="list-link ca" data-bs-toggle="modal" data-bs-target="#gidebox1"><i class="list-link text-warning zmdi zmdi-star-half"> <h4>Latest News</h4> </i></a></li>
+                    <li class="list-item"><a href="#" class="list-link ca" data-bs-toggle="modal" data-bs-target="#gidebox1"><i class="list-link text-warning zmdi zmdi-star-half"> <h4>Cargo</h4> </i></a> </li>
+                    <li class="list-item"><a href="help.html" class="list-link"><i class="list-link text-warning zmdi zmdi-star-half"> <h4>FAQs</h4> </i></a></li>
+                    <li class="list-item"><a href="help.html" class="list-link"><i class="list-link text-warning zmdi zmdi-star-half"> <h4>Contect</h4> </i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Note L2-->
+    <div class="container-fluid my-5">
+        <h5 class="mx-5 mt-5">Search Flights, Hotels, Bus and Holiday Packages</h5>
+        <p class="mx-5 mt-4" data-aos="fade-right">
+            EaseMyTrip.com is one of the topmost travel companies of India and is a trusted name in the Indian travel industry. 
+            It is also known for providing the best travel deals to travelers. Being a strong network of 59,000 travel agents 
+            (as of November 20, 2021) and having more than 11 million direct customers, EaseMyTrip can satisfy all your travel needs. 
+            Here, You can book flight tickets, hotels, bus tickets, and holiday packages at a cost-effective price. So, why go anywhere else? 
+            Visit us for a memorable travel experience in your budget.
+        </p>
+    </div>
+    <!-- Note L1-->
+    <div class="container-fluid bg-info my-5 py-5">
+        <div class="row my-5" data-aos="fade-left">
+            <div class="col-sm-3 py-5">
+                <h3>Why Book With Us?</h3>
+            </div>
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-1 px-1"><img src="Img/flite-434.png"></div>
+                            <div class="col-5">
+                                <h6>EASY BOOKING</h6>
+                                <p>We offer easy and convenient flight bookings with attractive offers.</p>
+                            </div>
+                            <div class="col-6">
+                                <div class="col"><img src="Img/note.png"></div>
+                                <div class="col">
+                                    <h6>LOWEST PRICE</h6>
+                                    <p>We ensure low rates on hotel reservation, holiday packages and on flight tickets.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-1 px-1"><img src="Img/announcement.png"></div>
+                            <div class="col-5">
+                                <h6>EXCITING DEALS</h6>
+                                <p>Enjoy exciting deals on flights, hotels, buses, car rental and tour packages.</p>
+                            </div>
+                            <div class="col-1 px-1"><img src="Img/helper876.png" width="98%"></div>
+                            <div class="col-5">
+                                <h6>24/7 SUPPORT</h6>
+                                <p>Get assistance 24/7 on any kind of travel related query. We are happy to assist you.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer-1 -->
+    <div class="container-fluid my-5 px-5">
+        <div class="row" data-aos="flip-up">
+            <div class="col-lg-3">
+                <img src="Img/Icon-S.png" height="100px">
+                <h3>AKSH MARG</h3>
+                <br>
+                <p class="text-justify">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Consectetur tempore vel officiis maxime cumque. Ad assumenda quibusdam, 
+                    ut vel culpa sunt quisquam, aspernatur quam deserunt sapiente aut fuga aliquam dolorum!
+                </p>
+            </div>
+            <div class="col-lg-2 offset-lg-1">
+                <h6>Useful Links</h6>
+                <ul class="list-unstyled" style="line-height:1cm;">
+                    <li class="list-item"><a class="text-dark list-link aw" href="index.html">Home</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw" href="about.html">About Us</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Services</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Terms of Services</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Privacy policy</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2">
+                <h6>Our Services</h6>
+                <ul class="list-unstyled" style="line-height:1cm;">
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Fight Checkin</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Cabs</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Flight Strtus</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Check PNR Strtus</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Corporate Travel</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Blog</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Cruse</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h6>Our Social Networks</h6>
+                <p class="small">Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                <ul type="none" class="h5 d-flex">
+                    <li class=" list-item me-2 px-2 py-1 bg-info" style="border-radius:50%;"><a href="https://twitter.com/i/flow/login" target="_blank" class="list-link text-white"><i class="zmdi zmdi-twitter"></i></a></li>
+                    <li class=" list-item mx-2 px-2 py-1 bg-info" style="border-radius:50%;"><a href="https://www.facebook.com/" target="_blank" class="list-link text-white"><i class="zmdi zmdi-facebook"></i></a></li>
+                    <li class=" list-item mx-2 px-2 py-1 bg-info" style="border-radius:50%;"><a href="https://www.instagram.com/?hl=en" target="_blank" class="list-link text-white"><i class="zmdi zmdi-instagram"></i></a></li>
+                    <li class=" list-item mx-2 px-2 py-1 bg-info" style="border-radius:50%;"><a href="https://www.skype.com/en/" target="_blank" class="list-link text-white"><i class="zmdi zmdi-skype"></i></a></li>
+                    <li class=" list-item mx-2 px-2 py-1 bg-info" style="border-radius:50%;"><a href="https://in.linkedin.com/nhome/" target="_blank" class="list-link text-white"><i class="zmdi zmdi-linkedin"></i></a></li>
+                </ul>
+                <br>
+                <input class="" type="text" placeholder="Enter your email">
+                <br><br>
+                <button class="btn btn-outline-primary text-warning">Subscribe</button>
+            </div>
+        </div>
+    </div>    
+    <!-- Footer-2 -->
+    <div class="container-fluid p-3 bg-secondary">
+        <div class="col-sm-12 p-1 text-center"> <h6>Copyright 2019 All Right Reserved By Government</h6></div>
+    </div>
+    <div class="slider">
+        <button class="btn btn-warning btn-pilled "><a href="#top"><i class="zmdi zmdi-long-arrow-up"></i></a></button>
+    </div>
+    <script>
+        var lodar =document.getElementById("lodee");
+        function loder() { lodar.style.display = "none";}
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init({
+        offset:200,duration:1000
+    });
+    </script>
+</body>
+</html>

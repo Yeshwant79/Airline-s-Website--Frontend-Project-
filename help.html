@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline</title>
+    <link rel="icon" type="image" href="Img/Icon-L.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="JQ.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        html{overflow-x:hidden;}
+        *{padding:0; margin:0;}
+        html{scroll-behavior:smooth;}
+        /* nav{background-color: lightsalmon;} */
+        .topbar{background-color:lightsalmon;}
+        a{text-decoration:none; color:black;}
+        .root-img{border-radius:50%;} 
+        .flip{transition:all 1s;}
+        .flip:hover{transform:scale(1);}
+        i{transition:all 2s;}
+        i:hover{transform:scale(2);}
+        .design1{background-color:black !important; color:white;}
+        .design2{color:white !important;}
+        .design3{color:black;}
+        .design4{background-color:yellow;}
+        .design5{background-color:orange !important;}
+        .design6{background-color:white !important;}
+        .slider{ position:fixed; bottom:0.5in; right:0.5in;}
+
+        .five{height:90vh; width:100%; margin-top:10vh; text-align:center; background-color:transparent; position:fixed; display:none; z-index:99;}
+        .c1{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:0s; animation-duration:5s; animation-iteration-count:infinite;} 
+        .c2{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:2s; animation-duration:6s; animation-iteration-count:infinite;} 
+        .c3{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:0s; animation-duration:7s; animation-iteration-count:infinite;} 
+        .c4{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:1s; animation-duration:6s; animation-iteration-count:infinite;} 
+        .c5{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:0s; animation-duration:5s; animation-iteration-count:infinite;} 
+        .c6{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:2s; animation-duration:7s; animation-iteration-count:infinite;} 
+        .c7{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:0s; animation-duration:6s; animation-iteration-count:infinite;} 
+        .c8{ height:10px; width:10px; margin-left:20px; animation-name:c; animation-delay:1s; animation-duration:5s; animation-iteration-count:infinite;}
+
+        @keyframes c{
+            0%{background-color:aquamarine; position: relative; top:0;}
+            25%{background-color:lawngreen;}
+            50%{background-color:blue;}
+            75%{background-color:orangered;}
+            100%{background-color:yellow; position: relative; top:90vh;}
+        }
+
+    </style>
+    <!-- JS -->
+    <script>
+
+        setInterval(showoff,15000);
+        function showoff(){
+
+            document.getElementById("offercard").style.display="block"
+
+            setTimeout(showon,5000);
+            function showon(){document.getElementById("offercard").style.display="none"}
+        }
+
+        // ---FAQs-------
+
+        function faq1(){
+            document.getElementById("ans1").style.display=""
+            document.getElementById("ans2").style.display="none"
+            document.getElementById("ans3").style.display="none"
+        }
+        function faq2(){
+            document.getElementById("ans2").style.display=""
+            document.getElementById("ans1").style.display="none"
+            document.getElementById("ans3").style.display="none"
+        }
+        function faq3(){
+            document.getElementById("ans3").style.display=""
+            document.getElementById("ans2").style.display="none"
+            document.getElementById("ans1").style.display="none"
+        }
+        // --Form Submit------
+
+        let word=["A","a","C","d","F","u","#","@","D","6","2","9","3"];
+        let a=word[Math.round(Math.random()*12)];
+        let b=word[Math.round(Math.random()*12)];
+        let c=word[Math.round(Math.random()*12)];
+        let d=word[Math.round(Math.random()*12)];
+        let e=word[Math.round(Math.random()*12)];
+        let key=(a+b+c+d+e);
+        function cap(){ document.getElementById("captcha").innerHTML=key;}
+
+        function fomin(){
+
+            let user = document.getElementById("user").value ;
+            let mail = document.getElementById("mail").value ;
+            let mno = document.getElementById("mno").value ;
+            let pas = document.getElementById("pass").value ;
+            let captcha = document.getElementById("captcha").value ;
+            let clone = document.getElementById("key").value ;
+            if(user==""){alert("Enter Your Name"); return false}
+            if(mail==""){alert("Enter mail-Id to proseed");return false;}
+            if(mail.indexOf("@") == -1) {alert("@ is missing"); return false;}
+            if(mail.indexOf(".") == -1) {alert(" . is missing"); return false;}
+            if(mail.indexOf("@") == 0) {alert("@ shoud not at first"); return false;}
+            if(mail.indexOf(".") == 0) {alert(". shoud not at first"); return false;}
+            if(mail.indexOf("@") == mail.length-1) {alert("@ shoud not at last"); return false;}
+            if(mail.indexOf(".") == mail.length-1) {alert(". shoud not at last"); return false;}
+            if(mail.indexOf("@") == mail.indexOf(".")-1) {alert("@ and . should not together"); return false;}
+            if(mail.indexOf(".") == mail.indexOf("@")-1) {alert(". and @ should not together"); return false;}
+            if(mno==""){alert("Enter Your Mobile Number"); return false;}
+            if(mno.length!=10){alert("Enter Valid Mobile Number"); return false;}
+            if(pas==""){alert("Creat Passward"); return false;}
+            if(pas.length<5){alert("Passward shoud be Strong"); return false;}
+            if(clone==""){alert("Enter Captcha"); return false;}
+            // if(clone!=captcha){alert(" Wrong Captch"); return false;}
+            if(clone==captcha){alert(" Registration Success"); return true;}
+
+        }
+
+    </script>
+    <!-- J Query -->
+    <script>
+        jQuery(document).ready(function(){
+            $("#btn1").click(function(){jQuery('#signup').hide() && jQuery('#signin').show() });
+            $("#btn2").click(function(){jQuery('#signin').hide()&& jQuery('#signup').show()});
+            $(".ca").click(function(){jQuery('#signin').hide()&& jQuery('#signup').show()});
+            $("#theam").click(function(){
+                $('body').toggleClass("design1")
+                $('.collapse').toggleClass("design1")
+                $('.aw').toggleClass("design2")
+                $('.bw').toggleClass("design6")
+                $('.tb').toggleClass("design3")
+                $('.org').toggleClass("design5")
+                $('.list-group-item').toggleClass("design4")
+            });
+        });
+    </script>
+</head>
+<body onload="showoff(),cap()">
+    <!-- Animation -->
+    <div class="container">
+        <div class="five" id="offercard">
+            <div class="Beloon d-flex">
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c3"></div>
+                <div class="c4"></div>
+                <div class="c5"></div>
+                <div class="c6"></div>
+                <div class="c7"></div>
+                <div class="c8"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Headder -->
+    <div class="container-fluid my-4" id="top">
+        <div class="row">
+            <div class="col-sm">
+                <div class="row">
+                    <div class="col-2"><img src="Img/Icon-S.png" height="60px" width="60px"></div>
+                    <div class="col-4"><h3>Akash Marg</h3></div>
+                </div>
+            </div>
+            <div class="col-sm pt-2">
+                <ul class="list-unstyled d-flex">
+                    <li class="list-item"><a href="help.html" class="bw"><span>Contect Us </span> <i class="zmdi zmdi-phone"></i></a></li>
+                    <li class="list-item px-2">|</li>
+                    <li class="list-item">
+                        <select name="" id=""> 
+                            <option value="">English</option>
+                            <option value="">Hindi</option>
+                        </select>
+                        <i class="zmdi zmdi-globe-alt"></i></li>
+                    <li class="list-item px-2">|</li>
+                    <li class="list-item px-1">
+                        <button class="border-0 btn-sm p-0 bg-light" style="width:25px;">A<sup>-</sup></button>
+                        <button class="border-0 btn-sm px-1 bg-light" style="width:25px;">A</button>
+                        <button class="border-0 btn-sm p-0 bg-light" style="width:25px;">A<sup>+</sup></button>
+                    </li>
+                    <li class="list-item px-2">|</li>
+                    <li class="list-item"><button id="theam" class="btn btn-sm btn-outline-warning"><i class="zmdi zmdi-brightness-6"></i></button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <div class="row sticky-top col-lg topbar m-0">
+
+        <div class="col-9 p-0">
+            <nav class="nav nav-tabs ps-5 justify-content-around py-2">
+                <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li class="nav-item"><a href="topdeals.html" class="nav-link">TOP DEALS</a></li>
+                <li class="nav-item"><a href="#" class="nav-link ca" data-bs-toggle="modal" data-bs-target="#gidebox1">GRIVENCE & TIPS</a></li>
+                <li class="nav-item"><a href="help.html" class="nav-link active">HELP</a></li>
+            </nav>
+        </div>
+
+        <div class="col-3 py-2 d-flex justify-content-center">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#form">Register / Log in</button>
+        </div> 
+    </div>
+     <!-- Model with form-1 & 2-->
+     <div class="modal" id="form">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background-color:aquamarine;">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="btn-group my-3">
+                            <button class="btn btn-outline-primary" id="btn1">Sign In</button>
+                            <button class="btn btn-outline-primary" id="btn2">Sign Up</button>
+                        </div>
+                    </div>
+                    <!-- Sign up -->
+                    <form action="help.html" class="from" id="signup" style="display:none;" onsubmit="return fomin()">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text"class="form-control" id="user">
+                        <label for="mail" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="mail">
+                        <label for="phone_no" class="form-label">Phone No </label>
+                        <input type="number"class="form-control" id="mno">
+                        <label for="Passward"class="form-label">Creat Passward</label>
+                        <input type="text" class="form-control" id="pass">
+                        <label for="Captcha" id="captcha" class="h2 p-1 mt-2 bg-warning"></label>
+                        <input type="text" class="form-control" id="key">
+
+                        <!-- <h5 onclick="fomin()" class="mt-2 p-2" style="display:block; margin:auto;">GO</h5> -->
+                        <!-- <input type="button" class="btn btn-outline-primary mt-3" onclick="fomin()" value="Submit"  style="display:block; margin:auto;"> -->
+                        <input type="submit" onclick="fomin()" style="display:block; margin:auto;" class="btn btn-outline-primary mt-2 mx-auto">
+                    </form>
+                    <!-- Sign in -->
+                    <form action="" class="from" id="signin">
+                        <label for="userid" class="form-label">User Id </label>
+                        <input type="email"class="form-control">
+                        <label for="Passward"class="form-label"> Passward</label>
+                        <input type="text" class="form-control">
+                        <br>
+                        <input type="submit" style="display:block; margin:auto;"  class="btn btn-outline-primary">
+                        <div class="mt-3">
+                            <a href=""> forgot Passward</a>
+                            <a href=""class="ca" style="float:right;" data-bs-toggle="modal" data-bs-target="#form"> Creat new Account</a>
+                        </div>
+                    </form>
+                    
+                </div>
+                <!-- closers -->
+            </div>
+        </div>
+    </div>
+    <!-- Model 2  -->
+    <div class="modal" id="gidebox1">
+        <div class="modal-dialog ">
+            <div class="modal-content" style="background-color:wheat;">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body"><p class="text-success">To use this facility please Log-in </p></div>
+                <!-- Modal footer -->
+                <div class="modal-footer"> <button class="btn btn-outline-primary ca" data-bs-toggle="modal" data-bs-target="#form">Way to Log-in </button></div>
+            </div>
+        </div>
+    </div>
+    <!-- body -->
+    <div class="container p-1 mt-5">
+
+        <div class="my-5 col-8 mx-auto text-center">
+
+            <h2 data-aos="flip-up" >How can we help you ?</h2>
+
+            <p class="my-4" data-aos="flip-down">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                Eum harum atque necessitatibus explicabo laborum sequi earum, 
+                veniam assumenda magni quasi illum exercitationem expedita tenetur placeat, 
+                pariatur cupiditate libero, repellat itaque.
+            </p>
+
+            <div class="row my-5">
+                <div class="col" data-aos="flip-left">
+                    <div class="row mx-5">
+                        <div class="col-12">
+                            <input type="text" class="w-100 pilled p-1">
+                        </div>
+                        <div class="col-sm-12 my-5">
+                            <button class="btn btn-outline-primary">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-5 p-5 shadow" data-aos="flip-right">
+                <div class="row">
+                    
+                    <div class="col m-2 p-5 shadow bg-light text-dark flip">
+                        <span><i class="zmdi zmdi-pin h3"></i></span>
+                        <h5 class="my-4">OUR MAIN OFFICE</h5>
+                        <P>SoHo 94 Broadway St INDIA, IN 1004</P>
+                    </div>
+                    <div class="col m-2 p-5 shadow bg-light text-dark flip">
+                        <span><i class="zmdi zmdi-smartphone-iphone h3"></i></span>
+                        <h5 class="my-4">PHONE NUMBER</h5>
+                        <P>234-9876-5400 <br> 888-0123-4567 ( Toll Free )</P>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col m-2 p-5 shadow bg-light text-dark flip">
+                        <span><i class="zmdi zmdi-city-alt h3"></i></span>
+                        <h5 class="my-4">FAX</h5>
+                        <P>1-234-567-8900</P>
+                    </div>
+                    <div class="col m-2 p-5 shadow bg-light text-dark flip">
+                        <span><i class="zmdi zmdi-email h3"></i></span>
+                        <h5 class="my-4">MAIL</h5>
+                        <P><u>akaskmarg@gmail.com</u></P>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Follow Us on -->
+    <div class="container mt-5 shadow p-5">
+        <h3 class="text-center my-5">Follow Us on</h3>
+        <div class="row">
+            <div class="col" data-aos="fade-down-right">
+                <ul class="list-unstyled nav justify-content-around" style="font-size:80px;">
+                    <li class="list-item"><a href="https://twitter.com/i/flow/login" target="_blank" class="list-link text-info"><i class="zmdi zmdi-twitter"></i></a></li>
+                    <li class="list-item"><a href="https://youtube.com/i/flow/login" target="_blank" class="list-link text-danger"><i class="zmdi zmdi-youtube"></i></a></li>
+                    <li class="list-item"><a href="https://www.facebook.com/" target="_blank" class="list-link text-success"><i class="zmdi zmdi-facebook"></i></a></li>
+                    <li class="list-item"><a href="https://www.instagram.com/?hl=en" target="_blank" class="list-link" style="color: magenta;"><i class="zmdi zmdi-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- FAQs -->
+    <div class="container my-5 py-5" id="faq">
+        <div class="row my-5 p-5 shadow" data-aos="fade-down-left">
+            <h2 class="text-center my-3"><u>FAQs</u></h2>
+            <h4>Looking for something else?</h4>
+            <a href="#" data-bs-toggle="collapse" data-bs-target="#moretoask" class="text-primary">View All Topics</a>
+            <hr class="my-2">
+            <div class="col"><button class=" btn aw" onclick="faq1()" data-bs-toggle="collapse" data-bs-target="#ans1">How to login ?</button></div>
+            <div class="col"> <button class=" btn aw" onclick="faq2()" data-bs-toggle="collapse" data-bs-target="#ans2">How do I Cansel Ticuts ?</button></div>
+            <div class="col"> <button class=" btn aw" onclick="faq3()" data-bs-toggle="collapse" data-bs-target="#ans3">After Canselation Will Payment refund ?</button></div>
+            <div>
+                <div class="collapse bg-light p-2" id="ans1">
+                    <h6>Steps to login or Register your self</h6>
+                    <ul>
+                        <li>Look for a button or link that says "Login" or "Register" on homepage or menu.</li>
+                        <li>If you already have an account, click the "Login" button, and enter your username and password.</li>
+                        <li>If you don't have an account, click the "Register" button, and complete the registration form with your personal information, including your name, email address, and desired password.</li>
+                        <li>Once you've successfully logged in or registered, you can start using the website and accessing its features.</li>
+                    </ul>
+                </div>
+                <div class="collapse bg-light p-2" id="ans2">
+                    <h6>Steps to cansel Ticuts</h6>
+                    <ul>
+                        <li>Log in first and go to manage Bookings</li>
+                        <li>Click Cansal ticket button</li>
+                        <li>Then follow the steps in the steps which are given . </li>
+                    </ul>
+                </div>
+                <div class="collapse bg-light p-2" id="ans3">
+                    After Canselation you Will refund Payment but after taking cancellation Charges .
+                </div>
+            </div>
+            <div class="collapse bg-light p-2" id="moretoask">
+
+                <div class="list-group">
+
+                    <div class="list-group-item">
+                        <button class="btn btn-light text-dark" data-bs-toggle="collapse" data-bs-target="#q1">Why is flight ticket booking the cheapest on Akash Marg?</button>
+                        <div class="collapse bg-light p-2" id="q1">
+                            <p>
+                                Akash Marg directly searches multiple airline websites for the cheapest fares. Many airlines prefer to sell their cheapest flight tickets on akash marg. 
+                                akash marg also searches through millions of routes to find the cheapest possible route for your flight journey.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="list-group-item">
+                        <button class="btn btn-light text-dark" data-bs-toggle="collapse" data-bs-target="#q2">How to book cheap flight tickets ?</button>
+                        <div class="collapse bg-light p-2" id="q2">
+                            <p>
+                                <ul>
+                                    <li>Book your flight tickets in advance to get the cheapest deals.</li>
+                                    <li>Be flexible and consider flying during off-peak hours to get cheaper flight tickets.</li>
+                                    <li>Sign up for akash marg fare alerts feature to get notified when tickets go cheaper.</li>
+                                    <li>Sign up for akash marg fare alerts feature to get notified when tickets go cheaper.</li>
+                                    <li>If you got time, try stopover flights as flights with multiple stops are often cheaper.</li>
+                                    <li>Avoid travelling on weekends, as air tickets are usually higher during this time.</li>
+                                    <li>Try budget airlines to book cheap flight tickets.</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="list-group-item">
+                        <button class="btn btn-light text-dark" data-bs-toggle="collapse" data-bs-target="#q3">How can I avail domestic flight offers on akash marg?</button>
+                        <div class="collapse bg-light p-2" id="q3">
+                            <p>
+                                Availing domestic flight offers on akash marg is a simple process that can be completed in a few steps. 
+                                First, you need to visit the akash marg website and enter your travel dates and destination. 
+                                You will then be presented with a list of available flights, along with fare information. 
+                                To view flight offers, simply click on the “offers” tab at the top of the page. 
+                                Here you will find a selection of discounts and promotions on domestic flights.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="list-group-item">
+                        <button class="btn btn-light text-dark" data-bs-toggle="collapse" data-bs-target="#q4">What are the advantages of booking flight tickets with akash marg?</button>
+                        <div class="collapse bg-light p-2" id="q4">
+                            <p>
+                                <ul>
+                                    <li>You can search for flights from over 100 airlines in one place. You can also filter your results by price, departure time, layovers and more.</li>
+                                    <li>akash marg has a Price Alert feature that helps you stay updated on changes in airfares. As a result, you can be confident that you're getting the best deal on your flight tickets when you book with akash marg.</li>
+                                    <li>akash marg offers its users discounts and akash marg money on flight ticket bookings.</li>
+                                    <li>akash marg provides 24x7 Customer Support to its users in case they face any issues while booking flight tickets or have any other queries.</li>
+                                    <li>akash marg has easy cancellation policies with no hidden charges.</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="list-group-item">
+                        <button class="btn btn-light text-dark" data-bs-toggle="collapse" data-bs-target="#q5">How can I cancel flight ticket booking?</button>
+                        <div class="collapse bg-light p-2" id="q5">
+                            <p>
+                                <ul>
+                                    <li>Visit akash marg flights homepage or open the akash marg app.</li>
+                                    <li>Login using the registered mobile no. or email address.</li>
+                                    <li>Click on your name icon on the top right corner of the screen, a drop-down menu will open.</li>
+                                    <li>Select ‘My Trips’ and your booked ticket history will appear.</li>
+                                    <li>Click on the flight ticket you wish to cancel.</li>
+                                    <li>Select “Proceed to cancellation” and cancel your ticket.</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="list-group-item">
+                        <button class="btn btn-light text-dark" data-bs-toggle="collapse" data-bs-target="#q6">How do I find the best flight deals on AKASH MARG?</button>
+                        <div class="collapse bg-light p-2" id="q6">
+                            <p>
+                                A simple flight search at https://www.akash marg.co.in/flights scans for prices on hundreds of travel sites in seconds. 
+                                We gather flight deals from across the web and put them in one place. Then on the search results page you can use 
+                                various filters to compare options for the same flight and easily choose the best flight deal from all of the deals 
+                                coming straight from the travel sites to your screen, with no extra fee from AKASH MARG.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Help -->
+    <div class="container mt-5 shadow p-5">
+        <div class="row" data-aos="fade-down-right">
+            <div class="col">
+                <ul class="list-unstyled nav justify-content-around" style="font-size:80px;">
+                    <li class="list-item"><a href="#" class="list-link ca" data-bs-toggle="modal" data-bs-target="#gidebox1"><i class="list-link text-warning zmdi zmdi-star-half"> <h4>Latest News</h4> </i></a></li>
+                    <li class="list-item"><a href="#" class="list-link ca" data-bs-toggle="modal" data-bs-target="#gidebox1"><i class="list-link text-warning zmdi zmdi-star-half"> <h4>Cargo</h4> </i></a> </li>
+                    <li class="list-item"><a href="#faq" class="list-link"><i class="list-link text-warning zmdi zmdi-star-half"> <h4>FAQs</h4> </i></a></li>
+                    <li class="list-item"><a href="#contact" class="list-link"><i class="list-link text-warning zmdi zmdi-star-half"> <h4>Contect</h4> </i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Contect Us -->
+    <div class="container mt-5 text-light p-5" id="contact">
+        <div class="col-lg-3 mx-auto text-center"> 
+            <h1 class="p-2 my-5" style="border-bottom:1px solid orange; color:aquamarine;">Contect us</h1>
+        </div>
+        <div class="row" data-aos="zoom-in-up">
+            <form class="p-4 mx-lg-auto my-5 col-lg-6 bg-light shadow border">
+                <input class="p-3 form-control my-2" type="text" placeholder="Name">
+                <input class="p-3 form-control my-2" type="text" placeholder="Phone">
+                <input class="p-3 form-control my-2" type="text" placeholder="Email">
+                <textarea class="p-3 form-control my-2" placeholder="Message" cols="35" rows="2"></textarea>
+                <button class="btn col-lg-2 offset-5 my-2 btn-dark">Save</button>
+            </form>
+        </div>
+    </div>
+    <!-- Footer-1 -->
+    <div class="container-fluid my-5 px-5">
+        <div class="row" data-aos="flip-right">
+            <div class="col-lg-3">
+                <img src="Img/Icon-S.png" height="100px">
+                <h3>AKSH MARG</h3>
+                <br>
+                <p class="text-justify">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Consectetur tempore vel officiis maxime cumque. Ad assumenda quibusdam, 
+                    ut vel culpa sunt quisquam, aspernatur quam deserunt sapiente aut fuga aliquam dolorum!
+                </p>
+            </div>
+            <div class="col-lg-2 offset-lg-1">
+                <h6>Useful Links</h6>
+                <ul class="list-unstyled" style="line-height:1cm;">
+                    <li class="list-item"><a class="text-dark list-link aw" href="index.html">Home</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw" href="about.html">About Us</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Services</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Terms of Services</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Privacy policy</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2">
+                <h6>Our Services</h6>
+                <ul class="list-unstyled" style="line-height:1cm;">
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Fight Checkin</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Cabs</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Flight Strtus</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Check PNR Strtus</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Corporate Travel</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Blog</a></li>
+                    <li class="list-item"><a class="text-dark list-link aw ca" data-bs-toggle="modal" data-bs-target="#gidebox1" href="">Cruse</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h6>Our Social Networks</h6>
+                <p class="small">Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                <ul type="none" class="h5 d-flex">
+                    <li class=" list-item me-2 px-2 py-1 bg-info" style="border-radius:50%;"><a href="https://twitter.com/i/flow/login" target="_blank" class="list-link text-white"><i class="zmdi zmdi-twitter"></i></a></li>
+                    <li class=" list-item mx-2 px-2 py-1 bg-info" style="border-radius:50%;"><a href="https://www.facebook.com/" target="_blank" class="list-link text-white"><i class="zmdi zmdi-facebook"></i></a></li>
+                    <li class=" list-item mx-2 px-2 py-1 bg-info" style="border-radius:50%;"><a href="https://www.instagram.com/?hl=en" target="_blank" class="list-link text-white"><i class="zmdi zmdi-instagram"></i></a></li>
+                    <li class=" list-item mx-2 px-2 py-1 bg-info" style="border-radius:50%;"><a href="https://www.skype.com/en/" target="_blank" class="list-link text-white"><i class="zmdi zmdi-skype"></i></a></li>
+                    <li class=" list-item mx-2 px-2 py-1 bg-info" style="border-radius:50%;"><a href="https://in.linkedin.com/nhome/" target="_blank" class="list-link text-white"><i class="zmdi zmdi-linkedin"></i></a></li>
+                </ul>
+                <br>
+                <input class="" type="email" placeholder="Enter your email">
+                <br><br>
+                <button class="btn btn-outline-primary text-warning">Subscribe</button>
+            </div>
+        </div>
+    </div>    
+    <!-- Footer-2 -->
+    <div class="container-fluid p-3 bg-secondary">
+        <div class="col-sm-12 p-1 text-center"> <h6>Copyright 2019 All Right Reserved By Government</h6></div>
+    </div>
+    <div class="slider">
+        <button class="btn btn-warning btn-pilled "><a href="#top"><i class="zmdi zmdi-long-arrow-up"></i></a></button>
+    </div>
+    <script>
+        var lodar =document.getElementById("lodee");
+        function loder() { lodar.style.display = "none";}
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset:200,duration:1000
+        });
+        </script>
+</body>
+</html>
